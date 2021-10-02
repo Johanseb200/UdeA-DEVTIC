@@ -11,6 +11,7 @@ import Header from "./Shared/Header"
 import Registro_de_productos from "./productos/pages/registro_de_productos";
 import Maestro_de_productos from "./productos/pages/maestro_de_productos";
 import Usuario_maestro from "./Usuario/pages/Usuario_maestro";
+import LoginButton from './components/Login';
 const App = () => {
 
 
@@ -37,6 +38,9 @@ const App = () => {
           </Route>
             <Route path="/usuario_maestro" exact> 
             <Usuario_maestro/>
+          </Route> 
+          <Route path="/LoginButton" exact>
+            <LoginButton/>
           </Route>
           <Route path="/Error" exact> 
             <Error/>
