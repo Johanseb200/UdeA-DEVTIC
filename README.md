@@ -11,4 +11,4 @@ Los integrantes que componen este grupo son:
 - Jhon Alejandro Sanchez Sanabria alejandross1811@gmail.com "BD administrator"
 - Klissman Cano Surmay kliss0821@gmail.com "Desarrollador"
 - Nelson Steven Rodríguez Ortiz steven980213@gmail.com "Analista"
- 
+- Sebastian Cardona Cardona sebastiancardonacardona@gmail.com "Desarrollador"
