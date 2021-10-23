@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 const cors = require("cors");
 var app = express();
 
+require("dotenv").config();
+
 const productosRoutes = require("./routes/productos")
 const ventasRoutes = require("./routes/ventas")
 const usuariosRoutes = require("./routes/usuarios")
@@ -11,13 +13,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-mongoose.connect(
-    "mongodb+srv://johan:123456johan@cluster0.ixezx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-    )
-    .then(() => {
+mongoose.connect(process.env.MONGODB_CONNECT).then(() => {
+    console.log("estamos conectados");
 
-        console.log("Estamos conectados");
-    });
+});
+
+    
+    
 
 
 app.use("/api/productos", productosRoutes);
