@@ -29,7 +29,7 @@ import { useEffect } from 'react';
 import Bienvenidos from './Home/pages/Bienvenidos';
 
 
-
+import GoogleLogin from 'react-google-login'; 
 
 
 
@@ -73,12 +73,15 @@ function App() {
 
   }, []);
 
+
   return (
     <div>
       
       
+      
       <Router>
         <Header />
+        
         <Switch>
           
           <Route path="/" exact>
