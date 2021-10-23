@@ -13,7 +13,6 @@ const Home =() => {
             <h3 className="d-flex justify-content-center mt-5 mb-5">2021</h3>
         </div>
 
-
     );
 }
 export default Home;
