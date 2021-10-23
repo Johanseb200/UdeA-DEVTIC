@@ -1,5 +1,5 @@
 
-import Reloj from '../components/Reloj'
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -11,50 +11,50 @@ import api from '../../api'
 import { Link } from 'react-router-dom'
 
 
-const Maestro =({ ventas, setVentas}) => {
+const Maestro_de_Usuario =({ usuarios, setUsuarios}) => {
 
-    const deleteVenta = (event) => {
+    const deleteUsuario = (event) => {
         const id = event.target.id;
-        api.ventas.delete(id);
-        console.log(ventas);
-        const newVenta = ventas.filter((venta) => venta.id !== id);
-        setVentas([...newVenta])
+        api.usuarios.delete(id);
+        console.log(usuarios);
+        const newUsuario = usuarios.filter((usuario) => usuario.id !== id);
+        setUsuarios([...newUsuario])
 
     };
     
     return(
 
         <div>
-            <h1 className="d-flex justify-content-center mt-5 mb-5">Maestro de Ventas</h1>
+            <h1 className="d-flex justify-content-center mt-5 mb-5">Maestro de Usuarios</h1>
             <Container>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
                         <th>ID</th>
+                        <th>Nombre</th>
                         <th>Documento</th>
-                        <th>Cliente</th>
-                        <th>Vendedor</th>
-                        <th>Total</th>
-                        <th>Estado</th>
+                        <th>Correo</th>
+                        <th>Direccion</th>
+                        <th>Rol</th>
                         <th>Eliminar</th>
                         <th>Editar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {ventas.map((ventas) => {
+                        {usuarios.map((usuarios) => {
                             return(
                             <tr>
-                                <td>{ventas._id}</td>
-                                <td>{ventas.documento}</td>
-                                <td>{ventas.cliente}</td>
-                                <td>{ventas.vendedor}</td>
-                                <td>{ventas.total}</td>
-                                <td>{ventas.estado}</td>
+                                <td>{usuarios._id}</td>
+                                <td>{usuarios.nombre}</td>
+                                <td>{usuarios.identificacion}</td>
+                                <td>{usuarios.correo}</td>
+                                <td>{usuarios.direccion}</td>
+                                <td>{usuarios.rol}</td>
                                 <td>
                                     <Button
                                     variant="secondary"
-                                    onClick={deleteVenta}
-                                    id={ventas._id}
+                                    onClick={deleteUsuario}
+                                    id={usuarios._id}
                                     className="ms-4"
                                     >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash2-fill" viewBox="0 0 16 16">
@@ -64,7 +64,7 @@ const Maestro =({ ventas, setVentas}) => {
                                 </td>
                                 <td>
 
-                                    <Link to ={`/maestro_de_ventas/Edit/${ventas._id}`}>
+                                    <Link to ={`/Maestro_de_Usuarios/Edit/${usuarios._id}`}>
 
                                         <Button
                                         variant="success"
@@ -102,4 +102,4 @@ const Maestro =({ ventas, setVentas}) => {
     );
 
 }
-export default Maestro;
+export default Maestro_de_Usuario;
