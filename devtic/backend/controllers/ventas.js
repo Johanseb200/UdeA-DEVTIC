@@ -39,3 +39,22 @@ exports.deleteVenta = (req, res) => {
         res.status(200).json("Venta eliminada");
     })
 };
+
+exports.editVenta = (req, res) => {
+    const id =req.params.id;
+    console.log(id);
+    const ventaUpd = new Venta({
+        _id: id,
+        documento: req.body.documento,
+        cliente: req.body.cliente,
+        vendedor: req.body.vendedor,
+        total: req.body.total,
+        estado: req.body.estado,
+    });
+    console.log(ventaUpd);
+
+    Venta.findByIdAndUpdate(id, ventaUpd).then((ventaResult) => {
+        res.status(200).json("La venta se actualizó satisfactoriamente");
+    });
+    
+};

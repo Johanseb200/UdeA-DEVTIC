@@ -5,13 +5,21 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 
 import Error from './Shared/Error'
 import Home from './Home/pages/Home';
-import Maestro from './Ventas/pages/Maestro';
-import Registro from './Ventas/pages/Registro';
+
 import Header from "./Shared/Header";
+
 import Registro_de_productos from "./productos/pages/registro_de_productos";
 import Editor_de_productos from "./productos/pages/editor_de_productos";
 import Maestro_de_productos from "./productos/pages/maestro_de_productos";
+
+import Maestro from './Ventas/pages/Maestro';
+import Registro from './Ventas/pages/Registro';
+import Editor_de_ventas from './Ventas/pages/Editor';
+
 import Usuario_maestro from "./Usuario/pages/Usuario_maestro";
+
+
+
 import api from './api';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
@@ -74,6 +82,10 @@ function App() {
             <Maestro ventas={ventas} setVentas={setVentas} />
           </Route>
 
+          <Route path="/maestro_de_ventas/Edit/:ventaId" exact> 
+            <Editor_de_ventas ventas={ventas} setVentas={setVentas} />
+          </Route>
+
           <Route path="/maestro_de_productos" exact> 
             <Maestro_de_productos productos={productos} setProductos={setProductos}/>
           </Route>
@@ -86,7 +98,7 @@ function App() {
             <Registro_de_productos productos={productos} />
           </Route>
 
-            <Route path="/usuario_maestro" exact> 
+          <Route path="/usuario_maestro" exact> 
             <Usuario_maestro/>
           </Route>
 

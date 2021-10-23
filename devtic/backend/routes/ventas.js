@@ -9,5 +9,7 @@ router.post("",VentaController.addVenta);
 router.delete("/:id", VentaController.deleteVenta);
 router.get("/:id", VentaController.getVentaId);
 
+router.put("/:id", VentaController.editVenta);
+
 
 module.exports = router;

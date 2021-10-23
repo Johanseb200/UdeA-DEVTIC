@@ -52,6 +52,15 @@ const api = {
             return CallApi(`/ventas/${id}`, {method: "DELETE",});
 
         },
+        edit(venta) {
+            return CallApi(`/ventas/${venta._id}`, {
+                method: "PUT",
+                body: JSON.stringify(venta),
+            });
+        },
+        getVenta(id) {
+            return CallApi(`/ventas/${id}`);
+        },
     },
 
 };
