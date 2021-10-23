@@ -4,33 +4,47 @@ import Button from 'react-bootstrap/Button'
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import api from "../../api";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+
 import ProductoForm from '../components/ProductoForm';
 
 
-const Registro_de_productos = ({ productos, setProductos }) => {
+const Editor_de_productos = ({ productos, setProductos }) => {
+    
     const history = useHistory();
+
+    const { productoId } = useParams();
+
 
     const [newProduct, setNewProduct] = useState({
         title: "",
         descripcion: "",
         price: 0,
-        disponible: true,
+        disponible: false,
     });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await api.productos.getProducto(productoId);
+            setNewProduct(response);
+        };
+        fetchData();
+    }, [productoId]);
 
     const handleChange = (event) => {
         setNewProduct({ ...newProduct, [event.target.name]: event.target.value });
         console.log(newProduct);
     };
     const handleClick = () => {
-        api.productos.create(newProduct);
-        alert("Producto Creado!");
-        //history.push("/maestro_de_productos");
+        api.productos.edit(newProduct);
+        //api.productos.edit(newProduct);
+        //alert("Producto Editado!");
+        history.push("/maestro_de_productos");
     };
 
     return(
         <React.Fragment>
-            <h1 className="text-center mt-5 mb-5">Registro de Productos</h1>
+            <h1 className="text-center mt-5 mb-5">Editor de Productos</h1>
             <Container>
                 <Row className="d-flex justify-content-center align-items-center">
                     <Col xs ={6}>
@@ -48,4 +62,4 @@ const Registro_de_productos = ({ productos, setProductos }) => {
 
 };
 
-export default Registro_de_productos;
+export default Editor_de_productos;
