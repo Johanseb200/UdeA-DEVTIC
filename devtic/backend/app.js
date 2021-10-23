@@ -5,6 +5,7 @@ var app = express();
 
 const productosRoutes = require("./routes/productos")
 const ventasRoutes = require("./routes/ventas")
+const usuariosRoutes = require("./routes/usuarios")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -21,5 +22,6 @@ mongoose.connect(
 
 app.use("/api/productos", productosRoutes);
 app.use("/api/ventas",ventasRoutes);
+app.use("/api/usuarios", usuariosRoutes);
 
 module.exports = app;

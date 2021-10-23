@@ -16,7 +16,9 @@ import Maestro from './Ventas/pages/Maestro';
 import Registro from './Ventas/pages/Registro';
 import Editor_de_ventas from './Ventas/pages/Editor';
 
-import Usuario_maestro from "./Usuario/pages/Usuario_maestro";
+import  Editor_de_Usuario from './Usuario/pages/Editor_de_Usuario'
+import Maestro_de_Usuario from './Usuario/pages/Maestro_de_Usuario'
+import Registro_de_Usuario from './Usuario/pages/Registro_de_Usuario'
 
 
 
@@ -35,6 +37,7 @@ function App() {
   
   const [productos,setProductos] = useState([]);
   const [ventas,setVentas] = useState([]);
+  const [usuarios,setUsuarios] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,6 +61,17 @@ function App() {
 
   }, []);
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await api.usuarios.list();
+      console.log(response);
+      setUsuarios(response);
+    };
+    fetchData();
+    
+
+  }, []);
 
   return (
     <div>
@@ -98,9 +112,19 @@ function App() {
             <Registro_de_productos productos={productos} />
           </Route>
 
-          <Route path="/usuario_maestro" exact> 
-            <Usuario_maestro/>
+          <Route path="/Registro_de_Usuarios" exact> 
+            <Registro_de_Usuario usuarios={usuarios}/>
           </Route>
+
+          <Route path="/Maestro_de_Usuarios" exact> 
+            <Maestro_de_Usuario usuarios={usuarios} setUsuarios={setUsuarios} />
+          </Route>
+
+          <Route path="/Maestro_de_Usuarios/Edit/:usuarioId" exact> 
+            <Editor_de_Usuario usuarios={usuarios} setUsuarios={setUsuarios} />
+          </Route>
+
+          
 
           <Route path="/Error" exact> 
             <Error/>

@@ -62,6 +62,30 @@ const api = {
             return CallApi(`/ventas/${id}`);
         },
     },
+    usuarios: {
+        list() {
+            return CallApi("/usuarios")
+        },
+        create(usuario) {
+            return CallApi("/usuarios", {
+                method: "POST",
+                body: JSON.stringify(usuario),
+            });
+        },
+        delete(id) {
+            return CallApi(`/usuarios/${id}`, {method: "DELETE",});
+
+        },
+        edit(usuario) {
+            return CallApi(`/usuarios/${usuario._id}`, {
+                method: "PUT",
+                body: JSON.stringify(usuario),
+            });
+        },
+        getUsuario(id) {
+            return CallApi(`/usuarios/${id}`);
+        },
+    },
 
 };
 
